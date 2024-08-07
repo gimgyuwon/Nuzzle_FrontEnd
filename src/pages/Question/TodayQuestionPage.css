@@ -1,35 +1,32 @@
 .today-question-page {
   display: flex;
-  justify-content: center;
   align-items: center;
   flex-direction: column;
+  position: relative; /* Ensure that the page content is relative for the popup */
 }
 
 .question-card {
-  position: relative; /* 내부 요소들이 절대 위치를 사용할 수 있도록 설정 */
-  width: 100%;
-  max-width: 400px; /* 최대 너비 설정 */
-  padding: 10px;
+  position: relative;
+  max-width: 400px;
 }
 
 .question-section {
-  position: relative; /* 내부 요소들이 절대 위치를 사용할 수 있도록 설정 */
+  position: relative;
   background-color: #f3f3f3;
 }
 
 .question-card-img {
-  padding: 0 0.5rem; /* 이미지 양쪽에 여백 추가 */
+  padding: 0 0.5rem;
 }
 
 .question-card-img img {
-  width: 100%; /* 양쪽 여백을 제외한 너비 설정 */
+  width: 100%;
 }
 
 .question-header,
 .question-content,
 .main-avatar {
   position: absolute;
-  /* 이미지 위에 요소를 배치하기 위해 절대 위치 사용 */
 }
 
 .question-header,
@@ -112,7 +109,7 @@ hr {
   border-radius: 10px;
   padding: 10px;
   font-size: 14px;
-  width: 200px; /* 너비 조정 */
+  width: 200px;
   margin-right: 10px;
 }
 
@@ -123,4 +120,114 @@ hr {
 .upload-icon {
   width: 24px;
   height: 24px;
+}
+
+.dimmed::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.65);
+  z-index: 1;
+}
+
+/* Ensuring highlighted elements are above dimmed background */
+.highlighted .sub-avatar,
+.highlighted .main-avatar,
+.highlighted .question-section,
+.highlighted .user-input-field,
+.highlighted .upload-button {
+  position: relative;
+  z-index: 2;
+}
+
+.user-input-field {
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  padding: 10px;
+  font-size: 14px;
+  width: 200px;
+  margin-right: 10px;
+}
+
+/* Popup CSS */
+.popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 140%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.popup-content {
+  background-color: #ffe6ef;
+  padding: 20px;
+  border-radius: 10px;
+  text-align: center;
+}
+
+.popup-rabbit-icon {
+  width: 119.78px;
+  height: 134.34px;
+  margin-bottom: 1rem;
+}
+
+.popup-content p {
+  margin: 0 0 1rem 0;
+}
+
+.popup-content button {
+  background-color: #f3f3f3;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 20px;
+  cursor: pointer;
+}
+
+.past-questions-button {
+  background-color: pink;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 20px;
+  cursor: pointer;
+  margin: 10px;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+
+.wake-up-container {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.wake-up-button {
+  background-color: #ffe6ef;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 20px;
+  cursor: pointer;
+  margin: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.wake-up-button img {
+  width: 24px;
+  height: 24px;
+  margin-right: 10px;
+}
+
+.close-icon {
+  width: 25px;
+  height: 25px;
 }

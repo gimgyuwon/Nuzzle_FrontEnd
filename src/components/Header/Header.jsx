@@ -1,14 +1,19 @@
 import { faAngleLeft } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import PropTypes from "prop-types";
 import "./Header.css";
 
 function Header({ extraClass }) {
   let navigate = useNavigate();
+  const location = useLocation(); // Get the current location
 
   let goBack = () => {
     navigate(-1);
+  };
+
+  let navigateToPastQuestions = () => {
+    navigate("/past-question");
   };
 
   return (
@@ -20,6 +25,14 @@ function Header({ extraClass }) {
           onClick={goBack}
         />
       </div>
+      {location.pathname === "/today-question" && (
+        <button
+          className="past-questions-button"
+          onClick={navigateToPastQuestions}
+        >
+          질문 모아보기
+        </button>
+      )}
     </header>
   );
 }

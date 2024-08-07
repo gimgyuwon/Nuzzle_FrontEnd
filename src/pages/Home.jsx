@@ -1,7 +1,11 @@
+import { Link } from "react-router-dom";
+
 function Home() {
   return (
-    <div>
-      <h3>This is Temp Home Page</h3>
+    <div className="home">
+      <Link to="/today-question">
+        <button className="home-button">질문 보러가기</button>
+      </Link>
     </div>
   );
 }

@@ -10,7 +10,7 @@
   justify-content: space-between;
   align-items: center;
   padding: 1px 20px;
-  z-index: 100; /* 다른 요소 위에 나타나도록 z-index 값 설정 */
+  z-index: 100;
 }
 
 .back-icon {
@@ -26,4 +26,16 @@
 
 .header.custom-header-bg {
   background-color: #f3f3f3;
+}
+
+.past-questions-button {
+  background-color: pink;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 20px;
+  cursor: pointer;
+  position: absolute;
+  right: 20px;
+  top: 30%;
+  transform: translateY(-50%);
 }

@@ -12,6 +12,7 @@ import Header from "./components/Header/Header";
 import Footer from "./components/Footer/Footer";
 import styled from "styled-components";
 import PhotoCapturePage from "./pages/UploadPhoto/PhotoCapturePage";
+import WakeUpLetterPage from "./pages/Question/WakeUpLetterPage";
 
 const AppContainer = styled.div`
   display: flex;
@@ -28,7 +29,7 @@ const Main = styled.main`
 const AppContent = () => {
   const location = useLocation();
 
-  // 특정 경로에 따라 extraClass를 설정
+  // Set extraClass based on specific paths
   const headerExtraClass =
     location.pathname === "/today-question" ? "custom-header-bg" : "";
 
@@ -40,6 +41,7 @@ const AppContent = () => {
           <Route path="/" element={<Home />} />
           <Route path="/past-question" element={<PastQuestionPage />} />
           <Route path="/today-question" element={<TodayQuestionPage />} />
+          <Route path="/wake-up-letter" element={<WakeUpLetterPage />} />
           <Route path="/photo-capture" element={<PhotoCapturePage />} />
         </Routes>
       </Main>
