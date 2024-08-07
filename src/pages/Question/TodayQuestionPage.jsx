@@ -20,19 +20,11 @@ const TodayQuestionPage = () => {
     "아빠가 사준 첫 스마트폰 (갤럭시s2).아빠가 사준 첫 스마트폰 (갤럭시s2)",
   ]);
   const [showPopup, setShowPopup] = useState(true); // Popup state
-  const [allAnswered, setAllAnswered] = useState(false); // Check if all answers are completed
   const question = "가족에게 받은 선물 중 기억에 남는 것은?";
   const user = "나";
 
   const navigate = useNavigate();
   const location = useLocation();
-
-  // This effect checks if all answers are completed
-  useEffect(() => {
-    if (answers.every((answer) => answer.trim() !== "")) {
-      setAllAnswered(true);
-    }
-  }, [answers]);
 
   // This effect handles the navigation state for setting isWriting
   useEffect(() => {
