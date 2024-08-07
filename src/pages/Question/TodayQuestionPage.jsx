@@ -162,7 +162,7 @@ const TodayQuestionPage = () => {
           </div>
         ))}
       </div>
-      {!showPopup && allAnswered && (
+      {!showPopup && (
         <div className="wake-up-container">
           <button className="wake-up-button" onClick={handleWakeUpClick}>
             ???님이 아직 답장 안 했어요
