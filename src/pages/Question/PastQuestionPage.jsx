@@ -1,20 +1,34 @@
 import PropTypes from "prop-types";
 import "./PastQuestionPage.css";
 import commentIcon from "../../assets/comment.png";
+import { useNavigate } from "react-router-dom";
 
-const PastQuestionList = ({ questionNumber, date, detail, comments }) => (
-  <div className="past-question-list">
-    <div className="past-question-header">
-      <p className="past-question-subtitle">오늘의 질문 #{questionNumber}</p>
-      <p className="past-question-date">{date}</p>
-      <div className="number-of-comment">
-        <img src={commentIcon} alt="comment" className="comment-icon" />
-        {comments}
+const PastQuestionList = ({ questionNumber, date, detail, comments }) => {
+  const navigate = useNavigate();
+
+  const handleCommentClick = () => {
+    navigate("/today-question");
+  };
+
+  return (
+    <div className="past-question-list">
+      <div className="past-question-header">
+        <p className="past-question-subtitle">오늘의 질문 #{questionNumber}</p>
+        <p className="past-question-date">{date}</p>
+        <div className="number-of-comment">
+          <img
+            src={commentIcon}
+            alt="comment"
+            className="comment-icon"
+            onClick={handleCommentClick}
+          />
+          {comments}
+        </div>
       </div>
+      <p className="past-question-detail">{detail}</p>
     </div>
-    <p className="past-question-detail">{detail}</p>
-  </div>
-);
+  );
+};
 
 PastQuestionList.propTypes = {
   questionNumber: PropTypes.number.isRequired,
