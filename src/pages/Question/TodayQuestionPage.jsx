@@ -9,27 +9,28 @@ import uploadIconPink from "../../assets/upload_pink.png"; // Pink upload icon
 import questionBubbleImg from "../../assets/question_bubble.png";
 import popupRabbitIcon from "../../assets/popup_rabbit.png"; // Popup icon
 import closeIcon from "../../assets/close.png"; // Close icon
+import alertIcon from "../../assets/alert.png"; // Alert icon
 
 const TodayQuestionPage = () => {
   const [isWriting, setIsWriting] = useState(false);
   const [inputValue, setInputValue] = useState("");
   const [answers, setAnswers] = useState([
     "",
-    "아빠가 사준 첫 스마트폰 (갤럭시s2).아빠가 사준 첫 스마트폰 (갤럭시s2)",
-    "아빠가 사준 첫 스마트폰 (갤럭시s2).아빠가 사준 첫 스마트폰 (갤럭시s2)",
-    "아빠가 사준 첫 스마트폰 (갤럭시s2).아빠가 사준 첫 스마트폰 (갤럭시s2)",
+    "아빠가 사준 첫 스마트폰 (갤럭시s2).",
+    "아빠가 사준 첫 스마트폰 (갤럭시s2).",
+    "아빠가 사준 첫 스마트폰 (갤럭시s2).",
   ]);
-  const [showPopup, setShowPopup] = useState(true); // Popup state
+  const [showInitialPopup, setShowInitialPopup] = useState(true); // Default to true for initial popup
+  const [showWakeupPopup, setShowWakeupPopup] = useState(true); // Default to true for wake-up popup
   const question = "가족에게 받은 선물 중 기억에 남는 것은?";
   const user = "나";
 
   const navigate = useNavigate();
   const location = useLocation();
 
-  // This effect handles the navigation state for setting isWriting
   useEffect(() => {
-    if (location.state && location.state.setIsWriting === 0) {
-      setIsWriting(0);
+    if (location.state && location.state.showPopup !== undefined) {
+      setShowInitialPopup(location.state.showPopup);
     }
   }, [location.state]);
 
@@ -51,8 +52,8 @@ const TodayQuestionPage = () => {
     }
   };
 
-  const handleClosePopup = () => {
-    setShowPopup(false);
+  const handleCloseInitialPopup = () => {
+    setShowInitialPopup(false);
     setIsWriting(0); // Start writing the first answer after closing the popup
   };
 
@@ -60,11 +61,15 @@ const TodayQuestionPage = () => {
     navigate("/wake-up-letter");
   };
 
+  const handleCloseWakeupPopup = () => {
+    setShowWakeupPopup(false);
+  };
+
   return (
     <div
       className={`today-question-page ${isWriting !== false ? "dimmed" : ""}`}
     >
-      {showPopup && (
+      {showInitialPopup && (
         <div className="popup">
           <div className="popup-content">
             <img
@@ -73,17 +78,17 @@ const TodayQuestionPage = () => {
               className="popup-rabbit-icon"
             />
             <p>내가 먼저 답변을 완료해야 가족들의 답을 볼 수 있어요!</p>
-            <button onClick={handleClosePopup}>답하기</button>
+            <button onClick={handleCloseInitialPopup}>답하기</button>
             <img
               src={closeIcon}
               alt="close"
               className="close-icon"
-              onClick={() => setShowPopup(false)}
+              onClick={handleCloseInitialPopup}
             />
           </div>
         </div>
       )}
-      <div className={`question-card ${showPopup ? "blurred" : ""}`}>
+      <div className={`question-card ${showInitialPopup ? "blurred" : ""}`}>
         <div className="question-section">
           <div className="question-card-img">
             <img
@@ -145,20 +150,35 @@ const TodayQuestionPage = () => {
                 <div className="user-answer">{answer}</div>
               )}
             </div>
-            <div
-              className="write-button"
-              onClick={() => handleWriteClick(index)}
-            >
-              <img src={writeIcon} alt="write" className="write-icon" />
-            </div>
+            {isWriting !== index && (
+              <div
+                className="write-button"
+                onClick={() => handleWriteClick(index)}
+              >
+                <img src={writeIcon} alt="write" className="write-icon" />
+              </div>
+            )}
           </div>
         ))}
       </div>
-      {!showPopup && (
+      {showWakeupPopup && (
         <div className="wake-up-container">
-          <button className="wake-up-button" onClick={handleWakeUpClick}>
-            ???님이 아직 답장 안 했어요
-          </button>
+          <div className="wake-up-content">
+            <img src={alertIcon} alt="alert-icon" className="alert-icon" />
+            <p>
+              어제의 질문에 <span className="highlight">따미</span> 님이 답을
+              아직 안했어요!
+            </p>
+            <button className="wake-up-button" onClick={handleWakeUpClick}>
+              깨우기
+            </button>
+            <img
+              src={closeIcon}
+              alt="close"
+              className="close-icon"
+              onClick={handleCloseWakeupPopup}
+            />
+          </div>
         </div>
       )}
     </div>

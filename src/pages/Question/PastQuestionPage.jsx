@@ -7,7 +7,7 @@ const PastQuestionList = ({ questionNumber, date, detail, comments }) => {
   const navigate = useNavigate();
 
   const handleCommentClick = () => {
-    navigate("/today-question");
+    navigate("/today-question", { state: { showPopup: false } });
   };
 
   return (
@@ -20,7 +20,7 @@ const PastQuestionList = ({ questionNumber, date, detail, comments }) => {
             src={commentIcon}
             alt="comment"
             className="comment-icon"
-            onClick={handleCommentClick}
+            onClick={() => handleCommentClick(false)} // Pass false or true as needed
           />
           {comments}
         </div>

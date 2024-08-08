@@ -17,9 +17,11 @@ const WakeUpLetter = () => {
     setShowPopup(true);
     // Set answered flag in local storage
     localStorage.setItem("answered", "true");
-    // Redirect to the TodayQuestionpage after a short delay
+    // Redirect to the TodayQuestionPage after a short delay
     setTimeout(() => {
-      navigate("/today-question", { state: { setIsWriting: 0 } });
+      navigate("/today-question", {
+        state: { showPopup: false, setIsWriting: 0 },
+      });
     }, 500); // Adjust the delay as needed
   };
 
