@@ -6,8 +6,7 @@ import "./Header.css";
 
 function Header({ extraClass }) {
   let navigate = useNavigate();
-  const location = useLocation(); // Get the current location
-
+  const location = useLocation();
   let goBack = () => {
     navigate(-1);
   };

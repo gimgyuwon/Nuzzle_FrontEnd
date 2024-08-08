@@ -13,6 +13,7 @@ import Footer from "./components/Footer/Footer";
 import styled from "styled-components";
 import PhotoCapturePage from "./pages/UploadPhoto/PhotoCapturePage";
 import WakeUpLetterPage from "./pages/Question/WakeUpLetterPage";
+import PeekPage from "./pages/UploadPhoto/PeekPage";
 
 const AppContainer = styled.div`
   display: flex;
@@ -43,6 +44,7 @@ const AppContent = () => {
           <Route path="/today-question" element={<TodayQuestionPage />} />
           <Route path="/wake-up-letter" element={<WakeUpLetterPage />} />
           <Route path="/photo-capture" element={<PhotoCapturePage />} />
+          <Route path="/peek" element={<PeekPage />} />
         </Routes>
       </Main>
       <Footer />

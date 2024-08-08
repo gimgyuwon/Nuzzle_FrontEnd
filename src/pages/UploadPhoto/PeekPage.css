@@ -1,0 +1,54 @@
+.peek-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  height: 100vh;
+  background-color: #fff;
+  position: relative;
+}
+
+.image-element {
+  width: 95%;
+  height: auto;
+  padding: 5px 10px;
+}
+
+.photo-container {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: 20px;
+}
+
+.photo-item {
+  width: 45%;
+  margin: 10px;
+  border-radius: 15px;
+  overflow: hidden;
+}
+
+.no-photo-message {
+  text-align: center;
+  margin-top: 20px;
+  font-size: 1.2em;
+}
+
+.no-photo-button {
+  margin-top: 20px;
+  padding: 10px 20px;
+  background-color: #ffcccc;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.emoji-button {
+  margin-top: 10px;
+  padding: 5px 10px;
+  background-color: #ffcccc;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+}
