@@ -10,6 +10,7 @@ const PeekPage = () => {
   const allEmojis = ["😘", "😢", "😡", "❤️", "👍", "❓", "🌸", "💤", "🎉"];
   const [showAllEmojis, setShowAllEmojis] = useState(false);
   const [fallingEmojis, setFallingEmojis] = useState([]);
+  const [showNotification, setShowNotification] = useState(false);
 
   useEffect(() => {
     // Load photos from local storage or state management
@@ -38,6 +39,12 @@ const PeekPage = () => {
     setTimeout(() => setFallingEmojis([]), 2000);
   };
 
+  const handleWakeUpClick = () => {
+    alert("알림이 갔습니다!");
+    setShowNotification(true);
+    setTimeout(() => setShowNotification(false), 3000);
+  };
+
   return (
     <div className="peek-page">
       <div className="image-container">
@@ -54,7 +61,9 @@ const PeekPage = () => {
                 className="image-element"
               />
             </div>
-            <button className="no-photo-button">깨우기</button>
+            <button className="no-photo-button" onClick={handleWakeUpClick}>
+              깨우기
+            </button>
           </div>
         ) : (
           photos.map((photo, index) => (
@@ -88,6 +97,7 @@ const PeekPage = () => {
       {fallingEmojis.map(({ emoji, id, left, duration }) => (
         <FallingEmoji key={id} emoji={emoji} left={left} duration={duration} />
       ))}
+      {showNotification && <Notification>알림이 갔습니다!</Notification>}
     </div>
   );
 };
@@ -139,4 +149,16 @@ const FallingEmojiContainer = styled.div`
       opacity: 0;
     }
   }
+`;
+
+const Notification = styled.div`
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #ffcccc;
+  padding: 10px 20px;
+  border-radius: 10px;
+  font-size: 1.2em;
+  z-index: 1000;
 `;
