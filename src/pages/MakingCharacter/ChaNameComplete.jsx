@@ -10,12 +10,10 @@ const ChaNameComplete = () => {
   const savedName = useSelector((state) => state.name.savedName);
   return (
     <Container>
-      <Content>
-        <Title>{savedName}!! 애칭을 마음에 들어하는 눈치네요!</Title>
-        <Subtitle>{savedName}! 우리 가족을 잘 부탁해~</Subtitle>
+        <Title>{savedName}!! 애칭을 마음에 들어하는 눈치네요! <br />
+          {savedName}! 우리 가족을 잘 부탁해~</Title>
         <CharacterImage src={characterImages2[characterImage]} alt="애착이" />
         <StyledButton onClick={() => navigate('/')}>완료하기</StyledButton>
-      </Content>
       <Footer></Footer>
     </Container>
   );
@@ -33,9 +31,6 @@ const Container = styled.div`
   padding: 20px;
 `;
 
-const Content = styled.div`
-  text-align: center;
-`;
 
 const Title = styled.h1`
   font-size: 18px;
@@ -43,16 +38,10 @@ const Title = styled.h1`
   padding: 10px;
 `;
 
-const Subtitle = styled.p`
-  font-size: 16px;
-  margin-bottom: 20px;
-  padding: 10px;
-`;
 
 const CharacterImage = styled.img`
-  width: 150px;
+  width: 270px;
   height: auto;
-  margin-bottom: 20px;
 `;
 
 const StyledButton = styled.button`
@@ -62,6 +51,7 @@ const StyledButton = styled.button`
   padding: 10px 20px;
   cursor: pointer;
   margin-top: 20px;
-  border-radius: 10px;
+  border-radius: 20px;
   font-size: 16px;
+  width: 30%;
 `;

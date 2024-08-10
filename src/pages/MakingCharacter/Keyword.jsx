@@ -58,9 +58,9 @@ const Keyword = () => {
         ))}
         {!showAll && <KeywordButton onClick={handleShowAllClick}>+</KeywordButton>}
       </KeywordGrid>
-      {showWarning && (
-        <WarningMessage>최대 선택 개수를 초과했어요!</WarningMessage>
-      )}
+      {showWarning ?  (
+        <WarningMessage>🚨최대 선택 개수를 초과했어요!</WarningMessage>
+      ) : <WarningMessage></WarningMessage>}
       <Tip>키워드를 많이 선택할수록 우리가족의 애착인형이 달라질 수 있어요!</Tip>
       <NextButton 
         disabled={selectedKeywords.length === 0 || selectedKeywords.length > maxKeywords}
@@ -108,25 +108,31 @@ const Subtitle = styled.p`
 
 const KeywordGrid = styled.div`
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(5, 1fr);
   gap: 10px;
   margin-bottom: 20px;
 `;
 
 const KeywordButton = styled.button`
-  background-color: ${props => (props.selected ? '#ffcccb' : '#e0e0e0')};
+  background-color: ${props => (props.selected ? '#F781BE' : '#e0e0e0')};
   color: black;
   border: none;
   padding: 10px;
   cursor: pointer;
-  border-radius: 4px;
+  border-radius: 20px;
   font-size: 14px;
   text-align: center;
 `;
 
 const WarningMessage = styled.p`
-  color: red;
+  color: black;
   margin-bottom: 20px;
+  padding: 10px;
+  font-size : 12px;
+  border: solid;
+  border-radius: 20px;
+  border-color: pink;
+  background-color: #fff5f5;
 `;
 
 const Tip = styled.p`
@@ -136,7 +142,7 @@ const Tip = styled.p`
   border-radius: 4px;
   margin-bottom: 20px;
   text-align: center;
-  font-size: 12px;
+  font-size: 12px; 
 `;
 
 const NextButton = styled.button`
@@ -146,7 +152,8 @@ const NextButton = styled.button`
   padding: 10px 20px;
   cursor: pointer;
   margin-top: 20px;
-  border-radius: 4px;
+  border-radius: 15px;
   font-size: 16px;
+  width: 40%;
   pointer-events: ${props => (props.disabled ? 'none' : 'auto')};
 `;

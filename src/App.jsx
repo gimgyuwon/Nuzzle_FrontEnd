@@ -1,7 +1,6 @@
-import { useState } from 'react';
-import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Home from './pages/Home';
-import Page1 from './pages/Page1';
+import Page1 from './pages/Page1'; // merge 하는 과정에서 Header, Footer추가안함 필요없는 페이지도 있어서
 import Page2 from './pages/Page2';
 import Page3 from './pages/Page3';
 import Page4 from './pages/Page4';
@@ -12,10 +11,10 @@ import styled from 'styled-components';
 import ChaColor from './pages/MakingCharacter/ChaColor';
 import ChaComplete from './pages/MakingCharacter/ChaComplete';
 import ChaNameComplete from './pages/MakingCharacter/ChaNameComplete';
+import ChaNoName from './pages/MakingCharacter/ChaNoName';
 
 
 function App() {
-  const [selectedColor, setSelectedColor] = useState('');
   return (
     <Router>
       <Container>
@@ -23,10 +22,11 @@ function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/ChaName" element={<ChaName />} />
+            <Route path="/ChaNoName" element={<ChaNoName />} />
             <Route path="/ChaNameComplete" element={<ChaNameComplete />} />
-            <Route path="/ChaColor" element={<ChaColor setColor={setSelectedColor}/>} />
-            <Route path="/ChaMake1" element={<ChaMake1 selectedColor={selectedColor}/>} />
-            <Route path="/ChaComplete" element={<ChaComplete selectedColor={selectedColor}/>} />
+            <Route path="/ChaColor" element={<ChaColor />} />
+            <Route path="/ChaMake1" element={<ChaMake1 />} />
+            <Route path="/ChaComplete" element={<ChaComplete/>} />
             <Route path="/Keyword" element={<Keyword />} />
             <Route path="/peek" element={<Page1 />} />
             <Route path="/piggybank" element={<Page2 />} />
